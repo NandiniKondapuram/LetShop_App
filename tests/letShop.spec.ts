@@ -1,5 +1,6 @@
 import { test } from '@playwright/test'
 import { apiUtilities } from './APIUtilities.setup'
+import { argosScreenshot } from "@argos-ci/playwright";
 test.use({
     ignoreHTTPSErrors: true
 })
@@ -35,4 +36,5 @@ test('Order the product', async ({ page }) => {
         page.waitForResponse(res => res.url().includes('/get-orders-for-customer/') && res.status() === 200),
         page.getByRole('button', { name: 'ORDERS' }).click()
     ])
+    await argosScreenshot(page, 'Order Page', { fullPage: true })
 })
