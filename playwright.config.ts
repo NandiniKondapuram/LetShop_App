@@ -29,9 +29,12 @@ export default defineConfig({
     [
       "@argos-ci/playwright/reporter",
       // Upload only on CI.
-      createArgosReporterOptions({ uploadToArgos: !!process.env.CI }),
+      { uploadToArgos: !!process.env.CI ,
+      token:"argos_yy6px3nn8hkwqjf7bptzyd7d51z76r3grd"
+      }
     ],
     ['html'],
+    
   ], 
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
@@ -40,7 +43,7 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
-    
+
   },
 
   /* Configure projects for major browsers */
